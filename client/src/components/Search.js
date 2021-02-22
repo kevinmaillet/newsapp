@@ -3,12 +3,8 @@ import DisplayGrid from "./DisplayGrid";
 import axios from 'axios';
 import { Helmet } from "react-helmet";
 const API_KEY = process.env.REACT_APP_API_KEY;
+const SERVER = process.env.SERVER;
 
-if (process.env.NODE_ENV !== 'production') {
-  const SERVER = "http://localhost:4000/"
-} else {
-  const SERVER = process.env.SERVER;
-}
 
 const Search = (props) => {
   const [articles, setArticles] = useState([]);
@@ -37,7 +33,7 @@ const Search = (props) => {
     // }
     const getArticles = async () => {
       try {
-          await axios.post(`${SERVER}articles/${userInput}`, {}, {
+          await axios.post(`${`http://localhost:4000/` || SERVER}articles/${userInput}`, {}, {
             headers: {
               Key: API_KEY
             }
