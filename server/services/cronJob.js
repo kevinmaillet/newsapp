@@ -1,6 +1,7 @@
 const cron = require('node-cron');
 const { getTopNewsArticles, getArticlesByCategory} = require('../api/api')
 const { updateDB } = require('../controllers/dbAccess')
+const { categories } = require('../static/categories');
 
 //run everyday 9am
 
@@ -11,7 +12,6 @@ const cronJob = () => {
                 updateDB('topHeadlines', res);
     
         // Get Categories and update DB
-            const categories = ["business", "technology", "health", "science", "entertainment", "politics"];
                 for (let i = 0; i < categories.length; i++) {
                     const res = await getArticlesByCategory(categories[i]);
                     updateDB(categories[i], res);
