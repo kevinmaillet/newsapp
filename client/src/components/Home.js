@@ -27,7 +27,7 @@ const Home = () => {
 //   }
   const getArticles = async () => {
     try {
-      await axios.post( `${SERVER_URL}/articles/topHeadlines`, {}, {
+      await axios.post( `https://api.newsapp.today/articles/topHeadlines`, {}, {
         headers: {
           Key: API_KEY
         }

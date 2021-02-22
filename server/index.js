@@ -1,14 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// require('dotenv').config();
 const dbConnect = require('./controllers/dbConnect')
-// const { updateDB, fetchDB } = require('./controllers/dbAccess')
-// const { getTopNewsArticles, getArticlesByCategory} = require('./api/api')
 const cronJob = require('./services/cronJob');
 const helmet = require("helmet")
 const { categoryRoute } = require('./routes/routes')
-// const { categories } = require('./static/categories');
 
 
 dbConnect();
