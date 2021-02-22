@@ -3,7 +3,12 @@ import axios from 'axios';
 import { Helmet } from "react-helmet";
 import DisplayGrid from "./DisplayGrid";
 const API_KEY = process.env.REACT_APP_API_KEY;
-const NODE_ENV = process.env.NODE_ENV || "http://localhost:4000/"
+
+if (process.env.NODE_ENV !== 'production') {
+  const SERVER = "http://localhost:4000/"
+} else {
+  const SERVER = process.env.SERVER;
+}
 
 
 const Home = () => {
@@ -28,7 +33,7 @@ const Home = () => {
 //   }
   const getArticles = async () => {
     try {
-      await axios.post( `${NODE_ENV}articles/topHeadlines`, {}, {
+      await axios.post( `${SERVER}articles/topHeadlines`, {}, {
         headers: {
           Key: API_KEY
         }
