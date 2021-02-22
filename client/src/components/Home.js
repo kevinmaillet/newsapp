@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Helmet } from "react-helmet";
 import DisplayGrid from "./DisplayGrid";
 const API_KEY = process.env.REACT_APP_API_KEY;
-const SERVER_URL = process.env.EXPRESS_APP || 'http://localhost:4000'
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
