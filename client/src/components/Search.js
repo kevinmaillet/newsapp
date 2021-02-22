@@ -33,7 +33,7 @@ const Search = (props) => {
     // }
     const getArticles = async () => {
       try {
-          await axios.post(`${`http://localhost:4000/` || SERVER}articles/${userInput}`, {}, {
+          await axios.post(`${SERVER}articles/${userInput}`, {}, {
             headers: {
               Key: API_KEY
             }
