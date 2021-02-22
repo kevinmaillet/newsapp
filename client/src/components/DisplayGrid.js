@@ -36,7 +36,7 @@ const DisplayGrid = (props) => {
 
   const displayArticles = articles.map((article, index) => {
     if (!article) {
-      return;
+      return null;
     }
     return (
       <Article
