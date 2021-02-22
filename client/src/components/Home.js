@@ -27,7 +27,7 @@ const Home = () => {
 //   }
   const getArticles = async () => {
     try {
-      await axios.post( `http://${EXPRESS}:4000/articles/topHeadlines`, {}, {
+      await axios.post( `http://143.198.9.151:4000/articles/topHeadlines`, {}, {
         headers: {
           Key: API_KEY
         }
