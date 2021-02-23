@@ -41,7 +41,8 @@ const Search = (props) => {
               setapiClosed(true);
               setArticles([]);
             } else {
-              setArticles(res.data);
+              //Reverse articles so newest are first
+              setArticles(res.data.reverse());
             }
         })
       }
@@ -55,6 +56,7 @@ const Search = (props) => {
 
   }, [userInput])
 
+    //Capatalize page title
     let pageTitle = window.location.pathname.substring(1);
 
     const capTitle = (string) => {

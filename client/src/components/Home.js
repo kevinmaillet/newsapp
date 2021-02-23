@@ -37,7 +37,8 @@ const Home = () => {
           setapiClosed(true);
           setArticles([]);
         } else {
-          setArticles(res.data);
+          //reverse articles so newest are first
+          setArticles(res.data.reverse());
         }
     })
     }
