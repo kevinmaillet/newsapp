@@ -11,12 +11,6 @@
   transition: 0.3s;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .header a:hover {
-    color: gray;
-  }
-}
-
 .logo {
   font-size: 2.5rem;
   z-index: 500;
@@ -85,6 +79,21 @@ nav {
 
 .exit {
   display: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 25px;
+  padding-top: 50px;
+  transform: translate(-50%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header a:hover {
+    color: gray;
+  }
 }
 
 @media only screen and (max-width: 1190px) {
@@ -184,13 +193,4 @@ nav {
     z-index: 100;
     color: white;
   }
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  height: 25px;
-  padding-top: 25px;
-  transform: translate(-50%);
 }

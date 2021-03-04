@@ -9,21 +9,7 @@ const Home = () => {
   const [apiClosed, setapiClosed] = useState(false)
 
   useEffect(() => {
-//   if (sessionStorage.getItem("news") === null) {
-//     fetch(`https://gnews.io/api/v4/top-headlines?country=us&token=${API_KEY}`)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       if (data.errors) {
-//         setArticles([]);
-//         setapiClosed(true);
-//       } else {
-//         setArticles(data.articles)
-//         sessionStorage.setItem('news', JSON.stringify(data.articles))
-//       }
-//     });
-// } else {
-//     setArticles(JSON.parse(sessionStorage.getItem("news")));
-//   }
+
   const getArticles = async () => {
     try {
       await axios.post( `https://api.newsapp.today/articles/topHeadlines`, {}, {
@@ -37,8 +23,12 @@ const Home = () => {
           setapiClosed(true);
           setArticles([]);
         } else {
+          //Reverse articles so newest are first
+          res.data.reverse();
+          //Use only first 20 articles
+          const firstTwenty = res.data.slice(0, 20)
           //reverse articles so newest are first
-          setArticles(res.data.reverse());
+          setArticles(firstTwenty);
         }
     })
     }

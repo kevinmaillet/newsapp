@@ -3,14 +3,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  padding: 2rem;
+  margin: 2rem;
+  padding: 0 1rem;
   min-height: 95vh;
   padding-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 
 .article {
   width: 40rem;
   padding: 1.5rem 0.5rem;
+  /* background-color: #e6e6e6; */
 }
 
 .article:hover {

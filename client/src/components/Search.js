@@ -41,8 +41,12 @@ const Search = (props) => {
               setapiClosed(true);
               setArticles([]);
             } else {
-              //Reverse articles so newest are first
-              setArticles(res.data.reverse());
+            //Reverse articles so newest are first
+            res.data.reverse();
+            //Use only first 20 articles
+            const firstTwenty = res.data.slice(0, 20)
+            //reverse articles so newest are first
+            setArticles(firstTwenty);
             }
         })
       }
@@ -58,7 +62,7 @@ const Search = (props) => {
 
     //Capatalize page title
     let pageTitle = window.location.pathname.substring(1);
-
+    
     const capTitle = (string) => {
       let split = string.split("");
       split[0] = split[0].toUpperCase();
