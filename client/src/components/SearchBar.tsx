@@ -1,19 +1,22 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Search } from "react-feather";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Search } from 'react-feather';
 
+interface SearchBarProps {
+  handleLinkClicks: () => void;
+  menuCollapse: boolean;
+}
 
-
-const SearchBar = (props) => {
-  const [input, setInput] = useState("");
+const SearchBar: React.FC<SearchBarProps> = (props) => {
+  const [input, setInput] = useState('');
   const history = useHistory();
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (input) {
       history.push(`/${input}`);
     }
-    setInput("");
+    setInput('');
     props.handleLinkClicks();
   };
 
@@ -26,7 +29,7 @@ const SearchBar = (props) => {
           value={input}
           type="text"
         />
-        <Search onClick={onFormSubmit} className="searchbar__searchbutton"/>
+        <Search onClick={onFormSubmit} className="searchbar__searchbutton" />
       </form>
     </div>
   );
