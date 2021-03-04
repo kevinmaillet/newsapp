@@ -11,24 +11,7 @@ const Search = (props) => {
   let userInput = props.match.params.id;
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
-    // if (sessionStorage.getItem(userInput) === null) {
-    // fetch(
-    //   `https://gnews.io/api/v4/search?q=${userInput}&country=us&token=${API_KEY}`
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     if (data.errors) {
-    //       setArticles([]);
-    //       setapiClosed(true);
-    //     } else {
-    //       setArticles(data.articles)
-    //       sessionStorage.setItem(userInput, JSON.stringify(data.articles))
-    //     }
-    //   });
-    // } else {
-    //   setArticles(JSON.parse(sessionStorage.getItem(userInput)));
-    // }
+    
     const getArticles = async () => {
       try {
           await axios.post(`https://api.newsapp.today/articles/${userInput}`, {}, {

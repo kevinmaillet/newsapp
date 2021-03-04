@@ -4,9 +4,9 @@ const SkeletonArticle = () => {
 
     return (
         <div className="article skeleton-article">
-            <div className="skeleton-image" />
-            <div className="skeleton-title" />
-            <div className="skeleton-subtitle" />
+            <div className="skeleton-article__image" />
+            <div className="skeleton-article__title" />
+            <div className="skeleton-article__subtitle" />
         </div>
       );
 

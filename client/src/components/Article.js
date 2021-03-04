@@ -9,9 +9,9 @@ const Article = (props) => {
     const d = new Date(props.publishedAt)
 
       return (
-        <div className="article">
+        <article className="article">
           <a href={props.link} target="_blank" rel="noopener noreferrer">
-            <div className="image-container">
+            <div className="article__image-container">
               <Image src={props.image} />
             </div>
             <div className="article__text">
@@ -19,7 +19,7 @@ const Article = (props) => {
               <h4 className="article__date">{d.toDateString()}</h4>
             </div>
           </a>
-        </div>
+        </article>
       );
   }
 

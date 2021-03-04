@@ -17,12 +17,12 @@ const Header = () => {
   };
 
     return (
-      <div className="header">
-        <div className="logo">
+      <header className="header">
+        <div className="header__logo">
           <a href="/">
             <span
               className={
-                menuCollapse ? "white-logo" : "underline-color"
+                menuCollapse ? "header__white-logo" : "header__underline-color"
               }
             >
               Newsapp
@@ -34,42 +34,42 @@ const Header = () => {
         <nav
           className={
             menuCollapse
-              ? "navbar-mobile-visible"
-              : "navbar-mobile-hidden"
+              ? "header__navbar header__navbar-mobile--visible"
+              : "header__navbar header__navbar-mobile--hidden"
           }
         >
           <ul>
-            <li className="navbar-li">
+            <li className="header__navbar-li">
               <NavLink to="business" onClick={() => handleLinkClicks()}>
                 Business
               </NavLink>
             </li>
-            <li className="navbar-li">
+            <li className="header__navbar-li">
               <NavLink to="technology" onClick={() => handleLinkClicks()}>
                 Tech
               </NavLink>
             </li>
-            <li className="navbar-li">
+            <li className="header__navbar-li">
               <NavLink to="health" onClick={() => handleLinkClicks()}>
                 Health
               </NavLink>
             </li>
-            <li className="navbar-li">
+            <li className="header__navbar-li">
               <NavLink to="science" onClick={() => handleLinkClicks()}>
                 Science
               </NavLink>
             </li>
-            <li className="navbar-li">
+            <li className="header__navbar-li">
               <NavLink to="entertainment" onClick={() => handleLinkClicks()}>
                 Entertainment
               </NavLink>
             </li>
-            <li className="navbar-li">
+            <li className="header__navbar-li">
               <NavLink to="politics" onClick={() => handleLinkClicks()}>
                 Politics
               </NavLink>
             </li>
-            <li className="navbar-li searchbar">
+            <li className="header__navbar-li searchbar">
               <SearchBar
                 handleLinkClicks={() => handleLinkClicks()}
                 menuCollapse={menuCollapse}
@@ -79,13 +79,13 @@ const Header = () => {
         </nav>
         <Menu
           onClick={() => setmenuCollapse(!menuCollapse)}
-          className={menuCollapse ? "menu-disabled" : "menu"}
+          className={menuCollapse ? "header__menu--disabled" : "header__menu"}
         />
         <X
           onClick={() => setmenuCollapse(!menuCollapse)}
-          className={menuCollapse ? "exit-enabled" : "exit"}
+          className={menuCollapse ? "header__exit--enabled" : "header__exit"}
         />
-      </div>
+      </header>
     );
 }
 

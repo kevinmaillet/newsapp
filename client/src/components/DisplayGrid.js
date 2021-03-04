@@ -19,20 +19,13 @@ const DisplayGrid = (props) => {
         return unique;
   }, []);
 
+
     setArticles(filteredArr)
 
   }, [props.articles])
 
   const apiClosed = props.apiClosed;
 
-
-  // const filteredArr = props.articles.reduce((unique, o) => {
-  //     if (!unique.some(obj => obj.image === o.image)) {
-  //       unique.push(o)
-  //     }
-  //     return unique;
-  // }, []);
-  // console.log(filteredArr)
 
   const displayArticles = articles.map((article, index) => {
     if (!article) {
@@ -54,12 +47,12 @@ const DisplayGrid = (props) => {
   if (props.articles.length === 0) {
     if (apiClosed) {
       return (
-        <div className="display-grid">
+        <main className="display-grid">
           There are no articles due to api limit being exceeded for the day.
-        </div>
+        </main>
       );
     } else {
-      return <div className="display-grid">
+      return <main className="display-grid">
         <SkeletonArticle />
         <SkeletonArticle />
         <SkeletonArticle />
@@ -70,10 +63,12 @@ const DisplayGrid = (props) => {
         <SkeletonArticle />
         <SkeletonArticle />
         <SkeletonArticle />
-      </div>;
+        <SkeletonArticle />
+        <SkeletonArticle />
+      </main>;
     }
   } else {
-    return <div className="display-grid">{displayArticles}</div>;
+    return <main className="display-grid">{displayArticles}</main>;
   }
 }
 

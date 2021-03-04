@@ -1,0 +1,150 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+
+  & a {
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+  }
+
+  &__logo {
+    font-size: 2.5rem;
+    z-index: 500;
+    animation-name: moveFromLeft;
+    animation-duration: 1.5s;
+    align-self: flex-end;
+
+    & a {
+      text-decoration: underline;
+      color: #00ff7f;
+    }
+  }
+
+  &__underline-color {
+    color: black;
+  }
+
+  &__white-logo {
+    color: white;
+  }
+
+  &__navbar {
+    display: flex;
+  }
+
+  &__navbar-li {
+    display: inline-block;
+    padding: 0 2rem;
+    margin-top: 15px;
+
+    &:nth-child(-n + 6) {
+      font-size: 1.8rem;
+    }
+
+    &:hover:nth-child(-n + 5) {
+      color: gray;
+    }
+  }
+
+  &__menu {
+    display: none;
+    cursor: pointer;
+  }
+
+  &__exit {
+    display: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .header a:hover {
+      color: gray;
+    }
+  }
+
+  @media only screen and (max-width: 1190px) {
+    &__navbar-mobile--hidden {
+      display: none;
+    }
+
+    &__navbar-mobile--visible {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: rgba(71, 71, 71, 0.9);
+      letter-spacing: 0.15rem;
+      animation-name: easeIn;
+      animation-duration: 0.3s;
+
+      & ul {
+        transform: translateY(40px);
+        padding-top: 5rem;
+        height: 25%;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+
+        & li {
+          margin: 10px 2px;
+          width: 48%;
+          text-align: center;
+          position: relative;
+          padding: 0.5rem 0;
+
+          &:nth-child(-n + 6) {
+            border: 1px rgba(255, 255, 255, 0.1) solid;
+            border-radius: 5px;
+            letter-spacing: 3px;
+          }
+
+          &:nth-child(7) {
+            flex-basis: 100%;
+          }
+
+          &:nth-child(6) input {
+            height: 2.5rem;
+            margin-right: 0.5rem;
+          }
+
+          &::nth-child(6) button {
+            height: 2.5rem;
+          }
+
+          & a {
+            color: white;
+          }
+        }
+      }
+    }
+
+    &__menu {
+      display: block;
+      color: black;
+    }
+
+    &__menu--disabled {
+      display: none;
+    }
+
+    &__exit--enabled {
+      display: block;
+      cursor: pointer;
+      z-index: 100;
+      color: white;
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 25px;
+  padding-top: 50px;
+  transform: translate(-50%);
+}

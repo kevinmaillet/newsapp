@@ -19,14 +19,14 @@ const SearchBar = (props) => {
 
   return (
     <div className="searchbar">
-      <form onSubmit={onFormSubmit}>
+      <form onSubmit={onFormSubmit} className="searchbar__form">
         <input
           onChange={(event) => setInput(event.target.value)}
-          className="searchbar-input"
+          className="searchbar__input"
           value={input}
           type="text"
         />
-        <Search onClick={onFormSubmit} className="searchbutton"/>
+        <Search onClick={onFormSubmit} className="searchbar__searchbutton"/>
       </form>
     </div>
   );
