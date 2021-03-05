@@ -65,58 +65,60 @@
   }
 
   @media only screen and (max-width: 1190px) {
-    &__navbar-mobile--hidden {
-      display: none;
-    }
+    &__navbar-mobile {
+      &--hidden {
+        display: none;
+      }
 
-    &__navbar-mobile--visible {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      width: 100%;
-      background-color: rgba(71, 71, 71, 0.9);
-      letter-spacing: 0.15rem;
-      animation-name: easeIn;
-      animation-duration: 0.3s;
+      &--visible {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(71, 71, 71, 0.9);
+        letter-spacing: 0.15rem;
+        animation-name: easeIn;
+        animation-duration: 0.3s;
 
-      & ul {
-        transform: translateY(40px);
-        padding-top: 5rem;
-        height: 25%;
-        width: 90%;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
+        & ul {
+          transform: translateY(40px);
+          padding-top: 5rem;
+          height: 25%;
+          width: 90%;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
 
-        & li {
-          margin: 10px 2px;
-          width: 48%;
-          text-align: center;
-          position: relative;
-          padding: 0.5rem 0;
+          & li {
+            margin: 10px 2px;
+            width: 48%;
+            text-align: center;
+            position: relative;
+            padding: 0.5rem 0;
 
-          &:nth-child(-n + 6) {
-            border: 1px rgba(255, 255, 255, 0.1) solid;
-            border-radius: 5px;
-            letter-spacing: 3px;
-          }
+            &:nth-child(-n + 6) {
+              border: 1px rgba(255, 255, 255, 0.1) solid;
+              border-radius: 5px;
+              letter-spacing: 3px;
+            }
 
-          &:nth-child(7) {
-            flex-basis: 100%;
-          }
+            &:nth-child(7) {
+              flex-basis: 100%;
+            }
 
-          &:nth-child(6) input {
-            height: 2.5rem;
-            margin-right: 0.5rem;
-          }
+            &:nth-child(6) input {
+              height: 2.5rem;
+              margin-right: 0.5rem;
+            }
 
-          &::nth-child(6) button {
-            height: 2.5rem;
-          }
+            &::nth-child(6) button {
+              height: 2.5rem;
+            }
 
-          & a {
-            color: white;
+            & a {
+              color: white;
+            }
           }
         }
       }
@@ -125,17 +127,19 @@
     &__menu {
       display: block;
       color: black;
+
+      &--disabled {
+        display: none;
+      }
     }
 
-    &__menu--disabled {
-      display: none;
-    }
-
-    &__exit--enabled {
-      display: block;
-      cursor: pointer;
-      z-index: 100;
-      color: white;
+    &__exit {
+      &--enabled {
+        display: block;
+        cursor: pointer;
+        z-index: 100;
+        color: white;
+      }
     }
   }
 }
