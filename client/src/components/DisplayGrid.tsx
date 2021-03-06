@@ -25,10 +25,12 @@ const DisplayGrid: React.FC<DisplayProps> = (props) => {
   const [articles, setArticles] = useState(props.articles);
 
   useEffect(() => {
-    // Remove articles with the same image
+    // Remove articles with the same image or same title
     const filteredArr = props.articles.reduce((unique: Article[], o) => {
       if (o) {
-        if (!unique.some((obj) => obj.image === o.image)) {
+        if (
+          !unique.some((obj) => obj.image === o.image || obj.title === o.title)
+        ) {
           unique.push(o);
         }
       }
@@ -38,9 +40,9 @@ const DisplayGrid: React.FC<DisplayProps> = (props) => {
     setArticles(filteredArr);
   }, [props.articles]);
 
-  const apiClosed = props.apiClosed;
+  const { apiClosed } = props;
 
-  const displayArticles = articles.map((article, index) => {
+  const displayArticles = articles.map((article: Article, index: number) => {
     if (!article) {
       return null;
     }

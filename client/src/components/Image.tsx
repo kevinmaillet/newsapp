@@ -9,7 +9,7 @@ interface ImageProps {
 const Image: React.FC<ImageProps> = (props) => {
   const imgElement = useRef<HTMLImageElement>(null);
 
-  const onImgLoad = () => {
+  const onImgLoad = (): void => {
     if (imgElement && imgElement.current) {
       if (imgElement.current.naturalHeight < 10) {
         imgElement.current.src = '../images/news.jpeg';

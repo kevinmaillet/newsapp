@@ -18,7 +18,7 @@ const Search: React.FC<SearchProps> = (props) => {
   let userInput = props.match.params.id;
 
   useEffect(() => {
-    const getArticles = async () => {
+    const getArticles = async (): Promise<void> => {
       try {
         await axios
           .post(

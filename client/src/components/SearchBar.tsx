@@ -11,7 +11,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const [input, setInput] = useState('');
   const history = useHistory();
 
-  const onFormSubmit = (e: React.SyntheticEvent) => {
+  const onFormSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
     if (input) {
       history.push(`/${input}`);
