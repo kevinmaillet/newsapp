@@ -1,11 +1,13 @@
 const Article = require('../models/article.model');
 
 const updateDB = (category, articles) => {
+  //Map over api response and update mongoDB
   for (let i = 0; i < articles.length; i++) {
     Article.findOne({ title: articles[i].title }, (err, result) => {
       if (err) {
         console.log(err);
       }
+      //Check if there is already an article with the same title
       if (result) {
         console.log('this is a duplicate');
       } else {
@@ -33,6 +35,7 @@ const updateDB = (category, articles) => {
 };
 
 const fetchDB = async (category) => {
+  //Get articles by category
   const data = await Article.find({ category: category }, (err, result) => {
     if (err) {
       console.log(err);
