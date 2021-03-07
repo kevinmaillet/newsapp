@@ -37,6 +37,11 @@ const DisplayGrid: React.FC<DisplayProps> = (props) => {
       return unique;
     }, []);
 
+    filteredArr.sort(
+      (a: Article, b: Article) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
+
     setArticles(filteredArr);
   }, [props.articles]);
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from './Image';
+import moment from 'moment';
 
 interface Source {
   name: string;
@@ -24,10 +25,10 @@ const Article: React.FC<ArticleProps> = (props) => {
           <Image src={props.image} alt={props.title} />
         </div>
         <div className="article__text">
+          <h4 className="article__date">{moment(d).fromNow()}</h4>
           <h4 className="article__title">
             {props.title} - {props.source.name}
           </h4>
-          <h4 className="article__date">{d.toDateString()}</h4>
         </div>
       </a>
     </article>
