@@ -3,6 +3,8 @@ import { RouteComponentProps } from 'react-router';
 import DisplayGrid from './DisplayGrid';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import { config } from '../config';
+const URL = config;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 interface RouterProps {
@@ -22,7 +24,7 @@ const Search: React.FC<SearchProps> = (props) => {
       try {
         await axios
           .post(
-            `https://api.newsapp.today/articles/${userInput}`,
+            `${URL}/articles/${userInput}`,
             {},
             {
               headers: {

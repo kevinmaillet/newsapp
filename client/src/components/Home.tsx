@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import DisplayGrid from './DisplayGrid';
+import { config } from '../config';
+const URL = config;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Home: React.FC = () => {
@@ -9,11 +11,11 @@ const Home: React.FC = () => {
   const [apiClosed, setapiClosed] = useState(false);
 
   useEffect(() => {
-    const getArticles = async () => {
+    const getArticles = async (): Promise<void> => {
       try {
         await axios
           .post(
-            `https://api.newsapp.today/articles/topHeadlines`,
+            `${URL}/articles/topHeadlines`,
             {},
             {
               headers: {
@@ -22,8 +24,6 @@ const Home: React.FC = () => {
             }
           )
           .then((res) => {
-            // setArticles(res.data);
-            console.log(res);
             if (!res.data) {
               setapiClosed(true);
               setArticles([]);
