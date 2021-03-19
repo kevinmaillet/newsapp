@@ -1,7 +1,7 @@
 const Article = require('../models/article.model');
 
 const updateDB = (category, articles = []) => {
-  try {
+  const checkAndUpdateDB = (category, articles) => {
     //Map over api response and update mongoDB
     for (let i = 0; i < articles.length; i++) {
       Article.findOne({ title: articles[i].title }, (err, result) => {
@@ -33,33 +33,20 @@ const updateDB = (category, articles = []) => {
         }
       });
     }
-  } catch (e) {
-    console.log(e.message);
-  } finally {
-    return true;
-  }
+  };
+  return new Promise((resolve, reject) =>
+    resolve(checkAndUpdateDB(category, articles))
+  );
 };
 
 const fetchDB = async (category) => {
-  try {
-    //Get articles by category
-    const data = await Article.find(
-      {
-        $or: [
-          { category: category },
-          { content: { $regex: category, $options: 'i' } },
-        ],
-      },
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
-    return data;
-  } catch (e) {
-    return [];
-  }
+  //Get articles by category
+  return await Article.find({
+    $or: [
+      { category: category },
+      { content: { $regex: category, $options: 'i' } },
+    ],
+  });
 };
 
 exports.updateDB = updateDB;
