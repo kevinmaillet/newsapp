@@ -5,8 +5,7 @@ const getTopNewsArticles = async () => {
     const response = await axios.get(
       `https://gnews.io/api/v4/top-headlines?country=us&token=db25ec16c61febb76f766b272bf90a25`
     );
-
-    return response.data.articles;
+    return new Promise((resolve, reject) => resolve(response.data.articles));
   } catch (err) {
     console.log("can't reach api");
   }
@@ -18,7 +17,7 @@ const getArticlesByCategory = async (category) => {
       `https://gnews.io/api/v4/search?q=${category}&country=us&token=db25ec16c61febb76f766b272bf90a25`
     );
 
-    return response.data.articles;
+    return new Promise((resolve, reject) => resolve(response.data.articles));
   } catch (err) {
     console.log("can't reach api");
   }
