@@ -27,5 +27,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i
-    - run: rsync -a ~/newsapp-server/actions-runner/_work/newsapp/newsapp/server ~/newsapp-server/server
+    - run: rsync -a ~/newsapp-server/actions-runner/_work/newsapp/newsapp/server/ ~/newsapp-server/server
     - run: pm2 restart newsapp
