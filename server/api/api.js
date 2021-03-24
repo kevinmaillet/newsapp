@@ -1,5 +1,7 @@
 const axios = require('axios');
 
+//Get top news articles
+
 const getTopNewsArticles = async () => {
   try {
     return await axios
@@ -11,6 +13,8 @@ const getTopNewsArticles = async () => {
     console.log("can't reach api");
   }
 };
+
+// Get articles by Category
 
 const getArticlesByCategory = async (category) => {
   try {
