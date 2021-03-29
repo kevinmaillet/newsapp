@@ -1,26 +1,14 @@
 import React from 'react';
 import Image from './Image';
 import moment from 'moment';
+import { Article as ArticleType } from '../context/siteContext';
 
-interface Source {
-  name: string;
-}
-
-interface ArticleProps {
-  publishedAt: Date;
-  link: string;
-  image: string;
-  title: string;
-  source: Source;
-  description: string;
-}
-
-const Article: React.FC<ArticleProps> = (props) => {
+const Article: React.FC<ArticleType> = (props) => {
   const d = new Date(props.publishedAt);
 
   return (
     <article className="article">
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <a href={props.url} target="_blank" rel="noopener noreferrer">
         <div className="article__image-container">
           <Image src={props.image} alt={props.title} />
         </div>

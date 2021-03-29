@@ -11,13 +11,25 @@ const categoryRoute = async (req, res) => {
 
   if (category === 'topHeadlines') {
     const response = await getTopNewsArticles();
-    await updateDB(category, response);
-    res.send(await fetchDB(category));
+    updateDB(category, response);
+    const dbResponse = await fetchDB(category);
+    //If response is not undefined i.e. api is open, send response and db find
+    if (response) {
+      res.send([...response, dbResponse]);
+    } else {
+      res.send(dbResponse);
+    }
     return;
   } else {
     const response = await getArticlesByCategory(category);
-    await updateDB(category, response);
-    res.send(await fetchDB(category));
+    updateDB(category, response);
+    const dbResponse = await fetchDB(category);
+    //If response is not undefined i.e. api is open, send response and db find
+    if (response) {
+      res.send([...response, dbResponse]);
+    } else {
+      res.send(dbResponse);
+    }
   }
 };
 
