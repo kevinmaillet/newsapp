@@ -15,7 +15,7 @@ const categoryRoute = async (req, res) => {
     const dbResponse = await fetchDB(category);
     //If response is not undefined i.e. api is open, send response and db find
     if (response) {
-      res.send([...response, dbResponse]);
+      res.send([...response, ...dbResponse]);
     } else {
       res.send(dbResponse);
     }
@@ -26,7 +26,7 @@ const categoryRoute = async (req, res) => {
     const dbResponse = await fetchDB(category);
     //If response is not undefined i.e. api is open, send response and db find
     if (response) {
-      res.send([...response, dbResponse]);
+      res.send([...response, ...dbResponse]);
     } else {
       res.send(dbResponse);
     }
