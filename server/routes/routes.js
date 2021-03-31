@@ -13,23 +13,13 @@ const categoryRoute = async (req, res) => {
     const response = await getTopNewsArticles();
     updateDB(category, response);
     const dbResponse = await fetchDB(category);
-    //If response is not undefined i.e. api is open, send response and db find
-    if (response) {
-      res.send([...response, ...dbResponse]);
-    } else {
-      res.send(dbResponse);
-    }
+    res.send(dbResponse);
     return;
   } else {
     const response = await getArticlesByCategory(category);
     updateDB(category, response);
     const dbResponse = await fetchDB(category);
-    //If response is not undefined i.e. api is open, send response and db find
-    if (response) {
-      res.send([...response, ...dbResponse]);
-    } else {
-      res.send(dbResponse);
-    }
+    res.send(dbResponse);
   }
 };
 
