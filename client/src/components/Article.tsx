@@ -15,7 +15,6 @@ const Article: React.FC<ArticleType> = (props) => {
         <div className="article__text">
           <h4 className="article__date">{moment(d).fromNow()}</h4>
           <h4 className="article__title">
-<!--             {props.title} - {props.source.name} -->
           </h4>
         </div>
       </a>
