@@ -13,8 +13,6 @@ const categoryRoute = async (req, res) => {
     const response = await getTopNewsArticles();
     updateDB(category, response);
     const dbResponse = await fetchDB(category);
-    console.log(response);
-    console.log(dbResponse);
     res.send([...response, ...dbResponse]);
     return;
   } else {
