@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import DisplayGrid from './DisplayGrid';
 import { config } from '../config';
 import { siteContext } from '../context/siteContext';
-import { removeDuplicatesandSort } from '../utils/utils';
+import { removeDuplicates } from '../utils/utils';
 const URL = config;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -29,9 +29,7 @@ const Home: React.FC = () => {
             if (!res.data) {
               setapiClosed(true);
             } else {
-              //Use only first 20 articles
-              const firstTwenty = res.data.slice(0, 20);
-              setArticles(removeDuplicatesandSort(firstTwenty));
+              setArticles(removeDuplicates(res.data));
               setLoading(false);
             }
           });
