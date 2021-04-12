@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   const [menuCollapse, setmenuCollapse] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', (e) => {
+    const scrollEvent = (e: Event) => {
       const header = document.querySelector('.header');
 
       if (window.scrollY > 0) {
@@ -16,7 +16,12 @@ const Header: React.FC = () => {
       } else {
         header?.classList.remove('header--active');
       }
-    });
+    };
+    window.addEventListener('scroll', scrollEvent);
+
+    return () => {
+      window.removeEventListener('scroll', scrollEvent);
+    };
   });
 
   //to remove mobile menu when a link is clicked or a search occurs

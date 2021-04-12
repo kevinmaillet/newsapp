@@ -6,7 +6,7 @@ import Banner from './Banner';
 import { config } from '../config';
 import { siteContext } from '../context/siteContext';
 import { removeDuplicates } from '../utils/utils';
-import JSONArticles from '../fixtures/articles.json';
+// import JSONArticles from '../fixtures/articles.json';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Home: React.FC = () => {
