@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import { siteContext } from '../context/siteContext';
 import { config } from '../config';
 import { removeDuplicates } from '../utils/utils';
-const URL = config;
+import JSONArticles from '../fixtures/articles.json';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 interface RouterProps {
@@ -26,7 +26,7 @@ const Search: React.FC<SearchProps> = (props) => {
         setLoading(true);
         await axios
           .post(
-            `${URL}/articles/${userInput}`,
+            `${config.url}/articles/${userInput}`,
             {},
             {
               headers: {

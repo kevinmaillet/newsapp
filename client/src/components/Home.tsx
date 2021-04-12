@@ -2,10 +2,11 @@ import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import DisplayGrid from './DisplayGrid';
+import Banner from './Banner';
 import { config } from '../config';
 import { siteContext } from '../context/siteContext';
 import { removeDuplicates } from '../utils/utils';
-const URL = config;
+import JSONArticles from '../fixtures/articles.json';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Home: React.FC = () => {
@@ -17,7 +18,7 @@ const Home: React.FC = () => {
         setLoading(true);
         await axios
           .post(
-            `${URL}/articles/topHeadlines`,
+            `${config.url}/articles/topHeadlines`,
             {},
             {
               headers: {
@@ -54,6 +55,7 @@ const Home: React.FC = () => {
         />
       </Helmet>
       <DisplayGrid />
+      <Banner message="We use cookies to analyze this site's traffic to provide a better user experience. By clicking accept you agree to these conditions." />
     </>
   );
 };

@@ -7,11 +7,8 @@ import { Article as ArticleType } from '../context/siteContext';
 const DisplayGrid: React.FC = () => {
   const { articles, isLoading, apiClosed } = useContext(siteContext);
 
-  const displayArticles = articles.map(
+  const displayArticles = articles?.map(
     (article: ArticleType, index: number) => {
-      if (!article) {
-        return null;
-      }
       return (
         <Article
           key={index}
@@ -21,6 +18,7 @@ const DisplayGrid: React.FC = () => {
           description={article.description}
           publishedAt={article.publishedAt}
           source={article.source}
+          // index={index}
         />
       );
     }

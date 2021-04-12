@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { Menu, X } from 'react-feather';
@@ -7,10 +7,23 @@ import Clock from './Clock';
 const Header: React.FC = () => {
   const [menuCollapse, setmenuCollapse] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener('scroll', (e) => {
+      const header = document.querySelector('.header');
+
+      if (window.scrollY > 0) {
+        header?.classList.add('header--active');
+      } else {
+        header?.classList.remove('header--active');
+      }
+    });
+  });
+
   //to remove mobile menu when a link is clicked or a search occurs
   const handleLinkClicks = (): void => {
     if (menuCollapse) {
       setmenuCollapse(!menuCollapse);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -18,13 +31,7 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="header__logo">
         <a href="/">
-          <span
-            className={
-              menuCollapse ? 'header__white-logo' : 'header__underline-color'
-            }
-          >
-            Newsapp
-          </span>
+          <span className={'header__underline-color'}>Newsapp</span>
         </a>
         <Clock />
       </div>

@@ -12,6 +12,7 @@ export interface Article {
   description: string;
   publishedAt: Date | string;
   source: Source;
+  // index?: number;
 }
 
 interface initialSiteProps {

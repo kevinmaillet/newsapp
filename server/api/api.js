@@ -11,6 +11,7 @@ const getTopNewsArticles = async () => {
       .then((response) => response.data.articles);
   } catch (err) {
     console.log("can't reach api");
+    return [];
   }
 };
 
@@ -25,6 +26,7 @@ const getArticlesByCategory = async (category) => {
       .then((response) => response.data.articles);
   } catch (err) {
     console.log("can't reach api");
+    return [];
   }
 };
 
