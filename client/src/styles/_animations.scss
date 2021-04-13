@@ -37,6 +37,30 @@
   }
 }
 
+@-webkit-keyframes easeInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@-moz-keyframes easeInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
 @keyframes easeLeft {
   0% {
     opacity: 0;
