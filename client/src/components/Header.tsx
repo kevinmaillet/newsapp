@@ -45,7 +45,7 @@ const Header: React.FC = () => {
         className={
           'header__navbar ' +
           (menuCollapse
-            ? 'header__navbar-mobile--visible'
+            ? 'header__navbar-mobile--visible animate-easeInFromRight'
             : 'header__navbar-mobile--hidden')
         }
       >
