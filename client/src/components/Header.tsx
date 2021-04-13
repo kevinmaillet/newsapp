@@ -43,9 +43,10 @@ const Header: React.FC = () => {
 
       <nav
         className={
-          menuCollapse
-            ? 'header__navbar header__navbar-mobile--visible'
-            : 'header__navbar header__navbar-mobile--hidden'
+          'header__navbar ' +
+          (menuCollapse
+            ? 'header__navbar-mobile--visible'
+            : 'header__navbar-mobile--hidden')
         }
       >
         <ul>
