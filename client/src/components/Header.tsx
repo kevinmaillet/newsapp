@@ -8,6 +8,7 @@ const Header: React.FC = () => {
   const [menuCollapse, setmenuCollapse] = useState(false);
 
   useEffect(() => {
+    //Sticky Header
     const scrollEvent = (e: Event) => {
       const header = document.querySelector('.header');
 
@@ -22,7 +23,7 @@ const Header: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', scrollEvent);
     };
-  });
+  }, []);
 
   //to remove mobile menu when a link is clicked or a search occurs
   const handleLinkClicks = (): void => {
@@ -43,9 +44,9 @@ const Header: React.FC = () => {
 
       <nav
         className={
-          'header__navbar ' +
+          'header__navbar header__navbar-mobile ' +
           (menuCollapse
-            ? 'header__navbar-mobile--visible animate-easeInFromRight'
+            ? 'header__navbar-mobile--visible'
             : 'header__navbar-mobile--hidden')
         }
       >
