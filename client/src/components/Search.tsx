@@ -40,6 +40,7 @@ const Search: React.FC<SearchProps> = (props) => {
             } else {
               setArticles(removeDuplicates(res.data));
               setLoading(false);
+              window.scrollTo(0, 0);
             }
           });
       } catch (err) {
