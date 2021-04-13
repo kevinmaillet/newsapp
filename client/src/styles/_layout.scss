@@ -89,10 +89,12 @@
         width: 50%;
         background-color: white;
         letter-spacing: 0.15rem;
-        animation-name: easeInFromRight;
-        animation-duration: 0.3s;
         border: 2px solid rgb(54, 54, 54);
         margin-top: 1rem;
+        -webkit-animation: easeInFromRight 0.3s; /* Safari 4+ */
+        -moz-animation: easeInFromRight 0.3s; /* Fx 5+ */
+        -o-animation: easeInFromRight 0.3s; /* Opera 12+ */
+        animation: easeInFromRight 0.3s; /* IE 10+, Fx 29+ */
 
         @media only screen and (max-width: 650px) {
           & {
