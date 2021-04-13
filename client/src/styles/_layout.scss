@@ -25,7 +25,6 @@
 
   &__logo {
     font-size: 2.5rem;
-    z-index: 500;
     animation-name: moveFromLeft;
     animation-duration: 1.5s;
 
@@ -93,6 +92,13 @@
         animation-duration: 0.3s;
         border: 2px solid rgb(54, 54, 54);
         margin-top: 1rem;
+
+        @media only screen and (max-width: 600px) {
+          & {
+            width: 75%;
+          }
+        }
+
         & ul {
           height: 100vh;
           transform: translateY(40px);

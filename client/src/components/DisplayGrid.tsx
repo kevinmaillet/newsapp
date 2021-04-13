@@ -48,9 +48,16 @@ const DisplayGrid: React.FC = () => {
         There are no articles due to api limit being exceeded for the day.
       </main>
     );
-  } else {
-    return <main className="display-grid">{displayArticles}</main>;
   }
+
+  if (articles.length === 0) {
+    return (
+      <main className="display-grid">
+        There are no articles to be displayed. Please try another search.
+      </main>
+    );
+  }
+  return <main className="display-grid">{displayArticles}</main>;
 };
 
 export default DisplayGrid;
