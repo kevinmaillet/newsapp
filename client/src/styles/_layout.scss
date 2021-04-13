@@ -91,10 +91,10 @@
         letter-spacing: 0.15rem;
         border: 2px solid rgb(54, 54, 54);
         margin-top: 1rem;
-        -webkit-animation: easeInFromRight 0.3s; /* Safari 4+ */
-        -moz-animation: easeInFromRight 0.3s; /* Fx 5+ */
-        -o-animation: easeInFromRight 0.3s; /* Opera 12+ */
-        animation: easeInFromRight 0.3s; /* IE 10+, Fx 29+ */
+        -webkit-animation: easeInFromRight 0.3s;
+        -moz-animation: easeInFromRight 0.3s;
+        -o-animation: easeInFromRight 0.3s;
+        animation: easeInFromRight 0.3s;
 
         @media only screen and (max-width: 650px) {
           & {
