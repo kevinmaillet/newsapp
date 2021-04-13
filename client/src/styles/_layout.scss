@@ -94,12 +94,6 @@
       &--visible {
         transform: translateX(0px);
         transition: 0.3s;
-        // display: block;
-        // -webkit-animation: easeInFromRight 0.3s;
-        // -moz-animation: easeInFromRight 0.3s;
-        // -o-animation: easeInFromRight 0.3s;
-        // animation: easeInFromRight 0.3s;
-        // animation-duration: 0.2s;
       }
 
       @media only screen and (max-width: 650px) {
