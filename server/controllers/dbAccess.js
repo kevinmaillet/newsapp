@@ -4,7 +4,6 @@ const updateDB = async (category, articles = []) => {
   //Check if article from api is already in db, if not then add to db.
   const checkExisitingAndUpdate = async (article) => {
     const existingArticle = await Article.findOne({ title: article.title });
-    console.log(existingArticle);
     if (existingArticle) {
       console.log('This is a duplicate');
       return;

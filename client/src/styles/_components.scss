@@ -18,7 +18,7 @@
 
 .skeleton-article {
   width: 360px;
-  height: 364px;
+  height: 370px;
 
   & > * {
     background: linear-gradient(92deg, rgba(#b3b3b3, 0.8), rgba(#e6e6e6, 0.8));
@@ -31,13 +31,13 @@
     height: 250px;
     width: 100%;
     border-radius: 5px;
-    background-color: grey;
+    background-color: #b3b3b3;
   }
 
   &__title {
     margin-bottom: 0.5rem;
     margin-top: 1rem;
-    height: 50px;
+    height: 80px;
     border-radius: 5px;
   }
 
