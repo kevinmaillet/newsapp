@@ -12,11 +12,13 @@ const Banner: React.FC<BannerTypes> = ({ message }) => {
   };
   return (
     <div className={showBanner ? 'banner' : 'banner--hidden'}>
-      <div className="banner__text">{message}</div>
-      <div className="banner__button-container">
-        <button onClick={handleClick} className="banner__button">
-          Accept
-        </button>
+      <div className="banner__content-wrapper">
+        <div className="banner__text">{message}</div>
+        <div className="banner__button-container">
+          <button onClick={handleClick} className="banner__button">
+            Accept
+          </button>
+        </div>
       </div>
     </div>
   );

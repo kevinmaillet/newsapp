@@ -1,36 +1,35 @@
 const Article = require('../models/article.model');
 
-const updateDB = (category, articles = []) => {
+const updateDB = async (category, articles = []) => {
+  //Check if article from api is already in db, if not then add to db.
+  const checkExisitingAndUpdate = async (article) => {
+    const existingArticle = await Article.findOne({ title: article.title });
+    console.log(existingArticle);
+    if (existingArticle) {
+      console.log('This is a duplicate');
+      return;
+    }
+
+    let newArticle = new Article({
+      category: category,
+      title: article.title,
+      description: article.description,
+      content: article.content,
+      url: article.url,
+      image: article.image,
+      publishedAt: article.publishedAt,
+      source: {
+        name: article.source.name,
+        url: article.source.url,
+      },
+    });
+
+    await newArticle.save();
+    console.log('Document Inserted Successfully!');
+  };
   //Map over api response and update mongoDB
   for (let i = 0; i < articles.length; i++) {
-    Article.findOne({ title: articles[i].title }, (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      //Check if there is already an article with the same title
-      if (result) {
-        console.log('this is a duplicate');
-      } else {
-        let article = new Article({
-          category: category,
-          title: articles[i].title,
-          description: articles[i].description,
-          content: articles[i].content,
-          url: articles[i].url,
-          image: articles[i].image,
-          publishedAt: articles[i].publishedAt,
-          source: {
-            name: articles[i].source.name,
-            url: articles[i].source.url,
-          },
-        });
-
-        article.save(function (err, doc) {
-          if (err) return console.error(err);
-          console.log('Document inserted successfully!');
-        });
-      }
-    });
+    await checkExisitingAndUpdate(articles[i]);
   }
 };
 
