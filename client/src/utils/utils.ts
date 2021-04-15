@@ -1,6 +1,5 @@
 import { Article as ArticleType } from '../context/siteContext';
 
-
 export const removeDuplicates = (articles: ArticleType[]) => {
   // Remove articles with the same image or same title and return first 20
   const removed = articles.reduce((unique: ArticleType[], o) => {
@@ -14,5 +13,5 @@ export const removeDuplicates = (articles: ArticleType[]) => {
     return unique;
   }, []);
 
-  return removed.slice(0, 20);
+  return removed;
 };

@@ -20,7 +20,8 @@
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "typescript": "^3.*.*"
+    "typescript": "^3.*.*",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.0",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "@types/uuid": "^8.3.0"
   }
 }

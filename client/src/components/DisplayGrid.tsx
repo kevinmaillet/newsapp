@@ -1,44 +1,15 @@
 import React, { useContext } from 'react';
 import { siteContext } from '../context/siteContext';
-import Article from './Article';
-import SkeletonArticle from './SkeletonArticle';
-import { Article as ArticleType } from '../context/siteContext';
+import SkeletonList from './SkeletonList';
+import InfiniteScroll from './InfiniteScroll';
 
 const DisplayGrid: React.FC = () => {
   const { articles, isLoading, apiClosed } = useContext(siteContext);
 
-  const displayArticles = articles?.map(
-    (article: ArticleType, index: number) => {
-      return (
-        <Article
-          key={index}
-          url={article.url}
-          image={article.image}
-          title={article.title}
-          description={article.description}
-          publishedAt={article.publishedAt}
-          source={article.source}
-          // index={index}
-        />
-      );
-    }
-  );
-
   if (isLoading) {
     return (
       <main className="display-grid">
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
-        <SkeletonArticle />
+        <SkeletonList />
       </main>
     );
   }
@@ -57,7 +28,11 @@ const DisplayGrid: React.FC = () => {
       </main>
     );
   }
-  return <main className="display-grid">{displayArticles}</main>;
+  return (
+    <main className="display-grid">
+      <InfiniteScroll />
+    </main>
+  );
 };
 
 export default DisplayGrid;
