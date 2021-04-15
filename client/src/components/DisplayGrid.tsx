@@ -6,13 +6,13 @@ import InfiniteScroll from './InfiniteScroll';
 const DisplayGrid: React.FC = () => {
   const { articles, isLoading, apiClosed } = useContext(siteContext);
 
-  if (isLoading) {
+  if (isLoading)
     return (
       <main className="display-grid">
         <SkeletonList />
       </main>
     );
-  }
+
   if (apiClosed) {
     return (
       <main className="display-grid">
