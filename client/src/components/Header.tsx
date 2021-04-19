@@ -29,8 +29,8 @@ const Header: React.FC = () => {
   const handleLinkClicks = (): void => {
     if (menuCollapse) {
       setmenuCollapse(!menuCollapse);
-      window.scrollTo(0, 0);
     }
+    window.scrollTo(0, 0);
   };
 
   return (
