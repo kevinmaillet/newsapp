@@ -1,4 +1,10 @@
 @import './_base';
 @import './_layout';
-@import './_components';
+@import './components/displaygrid';
+@import './components/skeletonarticle';
+@import './components/article';
+@import './components/img';
+@import './components/clock';
+@import './components/searchbar';
+@import './components/banner';
 @import './animations';

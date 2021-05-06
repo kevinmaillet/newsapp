@@ -1,0 +1,48 @@
+.searchbar {
+  &__input {
+    font-family: inherit;
+    border-radius: 0.8rem;
+    width: 20rem;
+    height: 3rem;
+    border-style: solid black;
+    padding: 0 10px;
+    color: black;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &__searchbutton {
+    transform: translateY(6px);
+    margin-left: 2px;
+    cursor: pointer;
+    color: black;
+  }
+
+  @media only screen and (max-width: 996px) {
+    &__form {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__input {
+      display: block;
+      width: 75%;
+    }
+  }
+
+  @media only screen and (max-width: 996px) {
+    &__searchbutton {
+      transform: translateY(3px);
+      color: black;
+    }
+  }
+
+  @media only screen and (max-width: 420px) {
+    &__input {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.skeleton-article {
+  width: 360px;
+  height: 370px;
+
+  & > * {
+    background: linear-gradient(92deg, rgba(#b3b3b3, 0.8), rgba(#e6e6e6, 0.8));
+    background-size: 200% 200%;
+
+    animation: animateSkeleton 1.5s ease infinite;
+  }
+
+  &__image {
+    height: 250px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #b3b3b3;
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    height: 80px;
+    border-radius: 5px;
+  }
+
+  &__subtitle {
+    margin-top: 0.5rem;
+    height: 16px;
+    border-radius: 5px;
+    width: 25%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    &__title {
+      height: 60px;
+    }
+
+    &__subtitle {
+      height: 1rem;
+      width: 25%;
+    }
+  }
+}

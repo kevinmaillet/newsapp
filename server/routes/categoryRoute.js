@@ -1,8 +1,10 @@
+const express = require('express');
+const router = express.Router();
 const { updateDB, fetchDB } = require('../controllers/dbAccess');
 const { getTopNewsArticles, getArticlesByCategory } = require('../api/api');
 require('dotenv').config();
 
-const categoryRoute = async (req, res) => {
+router.post('/articles/:category', async (req, res) => {
   const category = req.params.category;
   if (!req.headers.key === process.env.API_KEY) {
     res.send({ error: 'Wrong Api Key' });
@@ -21,6 +23,6 @@ const categoryRoute = async (req, res) => {
     const dbResponse = await fetchDB(category);
     res.send([...response, ...dbResponse]);
   }
-};
+});
 
-exports.categoryRoute = categoryRoute;
+module.exports = router;
