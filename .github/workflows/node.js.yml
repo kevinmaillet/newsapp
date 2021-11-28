@@ -5,11 +5,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: self-hosted
     defaults:
       run:
@@ -21,11 +20,11 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm i
-    - run: rsync -a ~/newsapp-server/actions-runner/_work/newsapp/newsapp/server/ ~/newsapp-server/server
-    - run: pm2 restart newsapp
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm i
+      - run: rsync -a ~/newsapp-server/actions-runner/_work/newsapp/newsapp/server/ ~/newsapp-server/server
+      - run: pm2 restart index
