@@ -82,7 +82,9 @@ const InfiniteScroll: React.FC = () => {
     <>
       <ArticleList articles={articles}></ArticleList>
       {isLoading && (
-        <h3 style={{ paddingTop: `2rem` }}>Loading More Articles...</h3>
+        <div style={{ paddingTop: `2rem`, width: `100%` }}>
+          <h3 style={{ textAlign: `center` }}>Loading More Articles...</h3>
+        </div>
       )}
     </>
   );
