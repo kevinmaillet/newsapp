@@ -21,10 +21,10 @@ const Article: React.FC<ArticleType> = ({
           <Image src={image} alt={title} />
         </div>
         <div className="article__text">
-          <h4 className="article__date">{moment(d).fromNow()}</h4>
-          <h4 className="article__title">
-            {title} - {source.name}
+          <h4 className="article__date">
+            {moment(d).fromNow()} - {source.name}
           </h4>
+          <h4 className="article__title">{title}</h4>
         </div>
       </a>
     </article>

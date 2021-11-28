@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { Menu, X } from 'react-feather';
-import Clock from './Clock';
 
 const Header: React.FC = () => {
   const [menuCollapse, setmenuCollapse] = useState(false);
@@ -39,7 +38,6 @@ const Header: React.FC = () => {
         <a href="/">
           <span className={'header__underline-color'}>Newsapp</span>
         </a>
-        <Clock />
       </div>
 
       <nav

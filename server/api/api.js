@@ -1,13 +1,13 @@
 const axios = require('axios');
+require('dotenv').config();
+const apiKey = process.env.NEWS_API_KEY;
 
 //Get top news articles
 
 const getTopNewsArticles = async () => {
   try {
     return await axios
-      .get(
-        `https://gnews.io/api/v4/top-headlines?country=us&token=db25ec16c61febb76f766b272bf90a25`
-      )
+      .get(`https://gnews.io/api/v4/top-headlines?country=us&token=${apiKey}`)
       .then((response) => response.data.articles);
   } catch (err) {
     console.log("can't reach api");
@@ -21,7 +21,7 @@ const getArticlesByCategory = async (category) => {
   try {
     return await axios
       .get(
-        `https://gnews.io/api/v4/search?q=${category}&country=us&token=db25ec16c61febb76f766b272bf90a25`
+        `https://gnews.io/api/v4/search?q=${category}&country=us&token=${apiKey}`
       )
       .then((response) => response.data.articles);
   } catch (err) {

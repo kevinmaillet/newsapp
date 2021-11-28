@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const articleSchema = mongoose.Schema({
   category: String,
-  title: String,
+  title: { type: String, unique: true },
   description: String,
   content: String,
   url: String,
-  image: String,
+  image: { type: String, unique: true },
   publishedAt: Date,
   source: {
     name: String,

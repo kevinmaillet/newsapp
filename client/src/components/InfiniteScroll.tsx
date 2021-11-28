@@ -1,56 +1,91 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { siteContext } from '../context/siteContext';
 import ArticleList from './ArticleList';
-import { Article as ArticleType } from '../context/siteContext';
-import { v4 as uuidv4 } from 'uuid';
-
-interface scrollArticleTypes {
-  [key: string]: ArticleType[];
-}
+import axios from 'axios';
+import { config } from '../config';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const InfiniteScroll: React.FC = () => {
-  const [scrollArticles, setScrollArticles] = useState<scrollArticleTypes>({});
-  const [articleIndex, setArticleIndex] = useState(0);
-  const { articles } = useContext(siteContext);
+  const { articles, setArticles, setapiClosed } = useContext(siteContext);
+  const [isLoading, setLoading] = useState(false);
+  const [skip, setSkip] = useState(20);
+  const [isBottom, setBottom] = useState(false);
+  const [debounce, setDebounce] = useState(false);
 
-  const reduceArticles = (arr: ArticleType[]) => {
-    let arrCopy = [...arr];
-    let obj: any = {};
-    for (let i = 0; i < arrCopy.length; i++) {
-      obj[i] = arrCopy.splice(0, 21);
-    }
-    return obj;
-  };
-
+  //Set Event Listeners for Bottom of Page
   useEffect(() => {
-    setScrollArticles(reduceArticles(articles));
-
     const bottomPage = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        setArticleIndex(articleIndex + 1);
+        setLoading(true);
+
+        setTimeout(() => {
+          setBottom(true);
+        }, 1 * 1000);
+      } else {
+        setBottom(false);
       }
     };
 
-    if (articles) {
-      window.addEventListener('scroll', bottomPage);
-    }
+    window.addEventListener('scroll', bottomPage);
 
     return () => {
       window.removeEventListener('scroll', bottomPage);
     };
-  }, [articleIndex, articles]);
+  }, []);
 
-  const iterateArticleList = (index: number) => {
-    let arr = [];
-    for (let i = 0; i < index + 1; i++) {
-      arr.push(
-        <ArticleList articles={scrollArticles[i.toString()]} key={uuidv4()} />
-      );
+  //When Bottom of page fetch more articles from API
+  useEffect(() => {
+    if (isBottom && !debounce) {
+      getAdditionalArticles();
+      setDebounce(true);
+      //To Prevent edge case of api getting called multiple times if page is moved up and down while isBottom is triggered
+      setTimeout(() => {
+        setDebounce(false);
+      }, 2 * 1000);
     }
-    return arr;
+    // eslint-disable-next-line
+  }, [isBottom]);
+
+  //Get Additional articles and set them in state.
+  const getAdditionalArticles = async (): Promise<void> => {
+    try {
+      await axios
+        .post(
+          `${config.url}/articles${
+            window.location.pathname === '/'
+              ? '/topHeadlines'
+              : window.location.pathname
+          }`,
+          { limit: 20, skip: skip },
+          {
+            headers: {
+              Key: API_KEY,
+            },
+          }
+        )
+        .then((res) => {
+          if (!res.data) {
+            setapiClosed(true);
+          } else {
+            setArticles([...articles, ...res.data]);
+            setSkip(skip + 20);
+          }
+        });
+    } catch (err) {
+      setapiClosed(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  return <>{iterateArticleList(articleIndex)}</>;
+  return (
+    <>
+      <ArticleList articles={articles}></ArticleList>
+      {isLoading && (
+        <h3 style={{ paddingTop: `2rem` }}>Loading More Articles...</h3>
+      )}
+    </>
+  );
 };
 
 export default InfiniteScroll;

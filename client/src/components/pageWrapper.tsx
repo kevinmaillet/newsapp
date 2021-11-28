@@ -3,7 +3,6 @@ import { RouteComponentProps } from 'react-router';
 import axios from 'axios';
 import { config } from '../config';
 import { siteContext } from '../context/siteContext';
-import { removeDuplicates } from '../utils/utils';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 interface RouterProps {
@@ -31,7 +30,7 @@ const pageWrapper = (WrappedComponent: React.FC) => {
           await axios
             .post(
               `${config.url}/articles/${category}`,
-              {},
+              { limit: 20, skip: 0 },
               {
                 headers: {
                   Key: API_KEY,
@@ -42,7 +41,7 @@ const pageWrapper = (WrappedComponent: React.FC) => {
               if (!res.data) {
                 setapiClosed(true);
               } else {
-                setArticles(removeDuplicates(res.data));
+                setArticles(res.data);
                 setLoading(false);
               }
             });
