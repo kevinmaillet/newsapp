@@ -14,7 +14,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const onFormSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
     if (input) {
-      history.push(`/${input}`);
+      history.push(`/${input.toLowerCase()}`);
     }
     setInput('');
     props.handleLinkClicks();
