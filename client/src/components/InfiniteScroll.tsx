@@ -8,7 +8,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const InfiniteScroll: React.FC = () => {
   const { articles, setArticles, setapiClosed } = useContext(siteContext);
   const [isLoading, setLoading] = useState(false);
-  const [skip, setSkip] = useState(20);
+  const [skip, setSkip] = useState(0);
   const [isBottom, setBottom] = useState(false);
   const [debounce, setDebounce] = useState(false);
 
@@ -16,8 +16,6 @@ const InfiniteScroll: React.FC = () => {
   useEffect(() => {
     const bottomPage = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        setLoading(true);
-
         setTimeout(() => {
           setBottom(true);
         }, 1 * 1000);
@@ -36,6 +34,7 @@ const InfiniteScroll: React.FC = () => {
   //When Bottom of page fetch more articles from API
   useEffect(() => {
     if (isBottom && !debounce) {
+      setLoading(true);
       getAdditionalArticles();
       setDebounce(true);
       //To Prevent edge case of api getting called multiple times if page is moved up and down while isBottom is triggered
@@ -56,7 +55,7 @@ const InfiniteScroll: React.FC = () => {
               ? '/topHeadlines'
               : window.location.pathname
           }`,
-          { limit: 20, skip: skip },
+          { limit: 20, skip: skip + articles.length },
           {
             headers: {
               Key: API_KEY,
@@ -68,7 +67,7 @@ const InfiniteScroll: React.FC = () => {
             setapiClosed(true);
           } else {
             setArticles([...articles, ...res.data]);
-            setSkip(skip + 20);
+            setSkip((skip) => skip + 20);
           }
         });
     } catch (err) {
