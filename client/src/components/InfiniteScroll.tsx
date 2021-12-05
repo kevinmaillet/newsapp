@@ -8,7 +8,6 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const InfiniteScroll: React.FC = () => {
   const { articles, setArticles, setapiClosed } = useContext(siteContext);
   const [isLoading, setLoading] = useState(false);
-  const [skip, setSkip] = useState(0);
   const [isBottom, setBottom] = useState(false);
   const [debounce, setDebounce] = useState(false);
 
@@ -55,7 +54,7 @@ const InfiniteScroll: React.FC = () => {
               ? '/topHeadlines'
               : window.location.pathname
           }`,
-          { limit: 20, skip: skip + articles.length },
+          { limit: 20, skip: articles.length },
           {
             headers: {
               Key: API_KEY,
@@ -67,7 +66,6 @@ const InfiniteScroll: React.FC = () => {
             setapiClosed(true);
           } else {
             setArticles([...articles, ...res.data]);
-            setSkip((skip) => skip + 20);
           }
         });
     } catch (err) {
