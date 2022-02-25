@@ -10,6 +10,7 @@ const dbConnect = () => {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
+        useCreateIndex: true,
       },
       () => console.log(' Mongoose is connected')
     );
