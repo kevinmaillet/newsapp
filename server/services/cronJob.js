@@ -1,7 +1,7 @@
 const cron = require('node-cron');
 const { getTopNewsArticles, getArticlesByCategory } = require('../api/api');
 const { updateDB } = require('../controllers/dbAccess');
-const { categories } = require('../static/categories');
+const categories = require('../static/categories');
 
 //run everyday 9am
 

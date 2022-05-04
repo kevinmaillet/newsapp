@@ -9,4 +9,4 @@ const redisClient = async () => {
   return client;
 };
 
-module.exports = { redisClient };
+module.exports = redisClient;

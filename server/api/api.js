@@ -30,5 +30,7 @@ const getArticlesByCategory = async (category) => {
   }
 };
 
-exports.getTopNewsArticles = getTopNewsArticles;
-exports.getArticlesByCategory = getArticlesByCategory;
+module.exports = {
+  getTopNewsArticles,
+  getArticlesByCategory,
+};

@@ -48,5 +48,7 @@ const fetchDB = async (category, skip = 0, limit = 20) => {
     .limit(limit);
 };
 
-exports.updateDB = updateDB;
-exports.fetchDB = fetchDB;
+module.exports = {
+  updateDB,
+  fetchDB,
+};

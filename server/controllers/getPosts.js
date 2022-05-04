@@ -1,5 +1,5 @@
 const { updateDB, fetchDB } = require('./dbAccess');
-const { redisClient } = require('../services/redis');
+const redisClient = require('../services/redis');
 const { getTopNewsArticles, getArticlesByCategory } = require('../api/api');
 
 const getPosts = async (req, res) => {

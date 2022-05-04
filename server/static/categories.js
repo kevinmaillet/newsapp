@@ -1,3 +1,10 @@
-const categories = ["business", "technology", "health", "science", "entertainment", "politics"];
+const categories = [
+  'business',
+  'technology',
+  'health',
+  'science',
+  'entertainment',
+  'politics',
+];
 
-exports.categories = categories;
+module.exports = categories;
