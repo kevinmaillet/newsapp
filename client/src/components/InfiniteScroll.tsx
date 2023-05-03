@@ -11,7 +11,7 @@ const InfiniteScroll: React.FC = () => {
   const [isBottom, setBottom] = useState(false);
   const [debounce, setDebounce] = useState(false);
 
-  //Set Event Listeners for Bottom of Page
+  //Set Event Listeners for Bottom of The Page
   useEffect(() => {
     const bottomPage = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
